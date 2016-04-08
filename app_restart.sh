@@ -9,8 +9,10 @@ while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symli
 done
 DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
+PARENTDIR=$( dirname "$DIR" )
+
 if [ $(ps aux | grep node | grep app.js | grep -v grep | wc -l | tr -s "\n") -eq 0 ]; then
   source $DIR/.envrc
-  node ./app.js
+  node ./app.js > $PARENTDIR/logs/carbot.log
 fi
 
