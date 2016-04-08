@@ -13,6 +13,6 @@ PARENTDIR=$( dirname "$DIR" )
 
 if [ $(ps aux | grep node | grep app.js | grep -v grep | wc -l | tr -s "\n") -eq 0 ]; then
   source $PARENTDIR/.envrc
-  node ./app.js > $PARENTDIR/logs/carbot.log
+  node $DIR/app.js > $PARENTDIR/logs/carbot.log
 fi
 
